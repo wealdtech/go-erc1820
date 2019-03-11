@@ -29,7 +29,18 @@ func TestImplementerInterface(t *testing.T) {
 	require.Nil(t, err, "failed to acces ERC-1820 registry")
 	addr := common.HexToAddress("907b4EB76F423595408C49c0BbB2bb117C91c594")
 	implementer, err := registry.InterfaceImplementer("ERC777Token", &addr)
-	require.Nil(t, err, "failed to acces registry")
+	require.Nil(t, err, "failed to access registry")
 	expected := common.HexToAddress("907b4EB76F423595408C49c0BbB2bb117C91c594")
 	assert.Equal(t, *implementer, expected, "failed to obtain correct implementer address")
+}
+
+func TestManager(t *testing.T) {
+	client, err := ethclient.Dial("https://ropsten.infura.io/v3/831a5442dc2e4536a9f8dee4ea1707a6")
+	require.Nil(t, err, "failed to acces Infura")
+	registry, err := NewRegistry(client)
+	addr := common.HexToAddress("7598ac132c987A2eEa0106e2E5B6e67244349071")
+	manager, err := registry.Manager(&addr)
+	require.Nil(t, err, "failed to access registry")
+	expected := common.HexToAddress("3b5988414d3af6e7cb7896eA1CF1C83B3cfF503F")
+	assert.Equal(t, *manager, expected, "failed to obtain correct manager address")
 }

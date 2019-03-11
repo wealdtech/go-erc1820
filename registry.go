@@ -102,11 +102,7 @@ func (r *Registry) SetManager(opts *bind.TransactOpts, address *common.Address, 
 	if err2 != nil {
 		return nil, err
 	}
-	if bytes.Compare(existingManager.Bytes(), address.Bytes()) != 0 {
-		//		name, _ := ens.ReverseResolve(r.client, existingManager)
-		//		if name == "" {
-		//			name = existingManager.Hex()
-		//		}
+	if bytes.Equal(existingManager.Bytes(), address.Bytes()) {
 		return nil, fmt.Errorf("new manager can only be set by existing manager %s", existingManager.Hex())
 	}
 	return nil, err
