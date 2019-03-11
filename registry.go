@@ -21,6 +21,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/wealdtech/go-erc1820/contracts"
 	"golang.org/x/crypto/sha3"
 )
 
@@ -30,12 +31,12 @@ var _contractAddress = common.HexToAddress("1820b744B33945482C17Dc37218C01D858EB
 // Registry is the struct that holds information about the ERC-1820 registry
 type Registry struct {
 	client   *ethclient.Client
-	contract *Erc1820Registry
+	contract *contracts.Erc1820Registry
 }
 
 // NewRegistry creates a new ERC-1820 registry client
 func NewRegistry(client *ethclient.Client) (*Registry, error) {
-	contract, err := NewErc1820Registry(_contractAddress, client)
+	contract, err := contracts.NewErc1820Registry(_contractAddress, client)
 	if err != nil {
 		return nil, err
 	}

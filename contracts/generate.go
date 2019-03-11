@@ -11,7 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package erc1820
+package contracts
 
-//go:generate abigen -abi erc1820registry.abi -out erc1820registry.go -pkg erc1820 -type Erc1820Registry
-//go:generate abigen -abi erc1820implementer.abi -out erc1820implementer.go -pkg erc1820 -type Erc1820Implementer
+//go:generate abigen -abi erc1820registry.abi -out erc1820registry.go -pkg contracts -type Erc1820Registry
+//go:generate abigen -abi erc1820implementer.abi -out erc1820implementer.go -pkg contracts -type Erc1820Implementer

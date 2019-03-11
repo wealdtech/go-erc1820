@@ -18,17 +18,18 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/wealdtech/go-erc1820/contracts"
 	"golang.org/x/crypto/sha3"
 )
 
 // Implementer is the struct that holds information about an ERC-1820 interface implementer
 type Implementer struct {
-	contract *Erc1820Implementer
+	contract *contracts.Erc1820Implementer
 }
 
 // NewImplementer creates a new ERC-1820 registry implementer client
 func NewImplementer(client *ethclient.Client, address *common.Address) (*Implementer, error) {
-	contract, err := NewErc1820Implementer(*address, client)
+	contract, err := contracts.NewErc1820Implementer(*address, client)
 	if err != nil {
 		return nil, err
 	}

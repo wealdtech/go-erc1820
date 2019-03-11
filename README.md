@@ -35,6 +35,8 @@ go get github.com/wealdtech/go-erc1820
 package main
 
 import (
+    "github.com/ethereum/go-ethereum/common"
+    "github.com/ethereum/go-ethereum/ethclient"
 	erc1820 "github.com/wealdtech/go-erc1820"
 )
 
@@ -50,10 +52,11 @@ func main() {
     }
 
     // Fetch the implementer for an interface
-    implementer, err := registry.InterfaceImplementer("ERC777TokensRecipient", )
+    implementer, err := registry.InterfaceImplementer("ERC777TokensRecipient", common.HexToAddress("1820b744B33945482C17Dc37218C01D858EBc714"))
     if err != nil {
         panic(err)
     }
+    fmt.Printf("Implementer is %s\n", implementer.Hex())
 }
 ```
 
