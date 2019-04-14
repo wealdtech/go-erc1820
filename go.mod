@@ -5,6 +5,7 @@ go 1.12
 require (
 	github.com/allegro/bigcache v1.2.0 // indirect
 	github.com/aristanetworks/goarista v0.0.0-20190219163901-728bce664cf5 // indirect
+	github.com/dchest/uniuri v0.0.0-20160212164326-8902c56451e9 // indirect
 	github.com/deckarep/golang-set v1.7.1 // indirect
 	github.com/ethereum/go-ethereum v1.8.23
 	github.com/go-stack/stack v1.8.0 // indirect

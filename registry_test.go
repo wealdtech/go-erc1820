@@ -27,11 +27,11 @@ func TestImplementerInterface(t *testing.T) {
 	require.Nil(t, err, "failed to acces Infura")
 	registry, err := NewRegistry(client)
 	require.Nil(t, err, "failed to acces ERC-1820 registry")
-	addr := common.HexToAddress("907b4EB76F423595408C49c0BbB2bb117C91c594")
-	implementer, err := registry.InterfaceImplementer("ERC777Token", &addr)
+	addr := common.HexToAddress("0x7598ac132c987A2eEa0106e2E5B6e67244349071")
+	implementer, err := registry.InterfaceImplementer("ERC777TokensSender", &addr)
 	require.Nil(t, err, "failed to access registry")
-	expected := common.HexToAddress("907b4EB76F423595408C49c0BbB2bb117C91c594")
-	assert.Equal(t, *implementer, expected, "failed to obtain correct implementer address")
+	expected := common.HexToAddress("0x5182f98e2857e64a8e177404cf2b23ace4aa7967")
+	assert.Equal(t, expected, *implementer, "failed to obtain correct implementer address")
 }
 
 func TestManager(t *testing.T) {

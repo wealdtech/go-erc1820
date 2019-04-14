@@ -26,7 +26,7 @@ import (
 )
 
 // _contractAddress is the well-known address of the ERC-1820 contract on all networks
-var _contractAddress = common.HexToAddress("1820b744B33945482C17Dc37218C01D858EBc714")
+var _contractAddress = common.HexToAddress("1820a4b7618bde71dce8cdc73aab6c95905fad24")
 
 // Registry is the struct that holds information about the ERC-1820 registry
 type Registry struct {

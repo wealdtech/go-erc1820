@@ -52,7 +52,7 @@ func main() {
     }
 
     // Fetch the implementer for an interface
-    implementer, err := registry.InterfaceImplementer("ERC777TokensRecipient", common.HexToAddress("1820b744B33945482C17Dc37218C01D858EBc714"))
+    implementer, err := registry.InterfaceImplementer("ERC777TokensRecipient", common.HexToAddress("907b4EB76F423595408C49c0BbB2bb117C91c594"))
     if err != nil {
         panic(err)
     }
