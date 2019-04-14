@@ -15,7 +15,9 @@ package erc1820
 
 import (
 	"bytes"
+	"encoding/hex"
 	"fmt"
+	"strings"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
@@ -48,10 +50,19 @@ func NewRegistry(client *ethclient.Client) (*Registry, error) {
 
 // InterfaceImplementer returns the address of the implementer of the given interface for the given address
 func (r *Registry) InterfaceImplementer(iface string, address *common.Address) (*common.Address, error) {
-	keccak := sha3.NewLegacyKeccak256()
-	keccak.Write([]byte(iface))
 	var hash [32]byte
-	copy(hash[:], keccak.Sum(nil))
+	if len(iface) == 10 && strings.HasPrefix(iface, "0x") {
+		// Looks like an ERC-165 interface ID
+		bytes, err := hex.DecodeString(iface[2:])
+		if err != nil {
+			return nil, err
+		}
+		copy(hash[:], bytes)
+	} else {
+		keccak := sha3.NewLegacyKeccak256()
+		keccak.Write([]byte(iface))
+		copy(hash[:], keccak.Sum(nil))
+	}
 	implementer, err := r.contract.GetInterfaceImplementer(nil, *address, hash)
 	return &implementer, err
 }
