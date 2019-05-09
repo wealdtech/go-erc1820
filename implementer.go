@@ -16,8 +16,8 @@ package erc1820
 import (
 	"bytes"
 
+	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/wealdtech/go-erc1820/contracts"
 	"golang.org/x/crypto/sha3"
 )
@@ -28,8 +28,8 @@ type Implementer struct {
 }
 
 // NewImplementer creates a new ERC-1820 registry implementer client
-func NewImplementer(client *ethclient.Client, address *common.Address) (*Implementer, error) {
-	contract, err := contracts.NewErc1820Implementer(*address, client)
+func NewImplementer(backend bind.ContractBackend, address *common.Address) (*Implementer, error) {
+	contract, err := contracts.NewErc1820Implementer(*address, backend)
 	if err != nil {
 		return nil, err
 	}

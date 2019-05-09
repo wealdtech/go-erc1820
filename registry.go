@@ -22,7 +22,6 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/wealdtech/go-erc1820/contracts"
 	"golang.org/x/crypto/sha3"
 )
@@ -32,18 +31,18 @@ var _contractAddress = common.HexToAddress("1820a4b7618bde71dce8cdc73aab6c95905f
 
 // Registry is the struct that holds information about the ERC-1820 registry
 type Registry struct {
-	client   *ethclient.Client
+	backend  bind.ContractBackend
 	contract *contracts.Erc1820Registry
 }
 
 // NewRegistry creates a new ERC-1820 registry client
-func NewRegistry(client *ethclient.Client) (*Registry, error) {
-	contract, err := contracts.NewErc1820Registry(_contractAddress, client)
+func NewRegistry(backend bind.ContractBackend) (*Registry, error) {
+	contract, err := contracts.NewErc1820Registry(_contractAddress, backend)
 	if err != nil {
 		return nil, err
 	}
 	return &Registry{
-		client:   client,
+		backend:  backend,
 		contract: contract,
 	}, nil
 }
@@ -80,7 +79,7 @@ func (r *Registry) SetInterfaceImplementer(opts *bind.TransactOpts, iface string
 
 	// An error occurred.  The most common reason for this is that the implementer doesn't implement the interface, so check for
 	// this situation and if so return an appropriate error
-	implementerContract, err2 := NewImplementer(r.client, implementer)
+	implementerContract, err2 := NewImplementer(r.backend, implementer)
 	if err2 != nil {
 		return nil, err
 	}
