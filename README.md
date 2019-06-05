@@ -5,6 +5,7 @@
 [![GoDoc](https://godoc.org/github.com/wealdtech/go-erc1820?status.svg)](https://godoc.org/github.com/wealdtech/go-erc1820)
 [![Travis CI](https://img.shields.io/travis/wealdtech/go-erc1820.svg)](https://travis-ci.org/wealdtech/go-erc1820)
 [![codecov.io](https://img.shields.io/codecov/c/github/wealdtech/go-erc1820.svg)](https://codecov.io/github/wealdtech/go-erc1820)
+[![Go Report Card](https://goreportcard.com/badge/github.com/wealdtech/go-erc1820)](https://goreportcard.com/report/github.com/wealdtech/go-erc1820)
 
 Go module to simplify talking to the [ERC-1820](https://eips.ethereum.org/EIPS/eip-1820) registry contract.
 
