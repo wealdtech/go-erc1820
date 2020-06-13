@@ -20,7 +20,6 @@ var (
 	_ = big.NewInt
 	_ = strings.NewReader
 	_ = ethereum.NotFound
-	_ = abi.U256
 	_ = bind.Bind
 	_ = common.Big1
 	_ = types.BloomLookup
@@ -174,7 +173,7 @@ func (_Erc1820Implementer *Erc1820ImplementerTransactorRaw) Transact(opts *bind.
 
 // CanImplementInterfaceForAddress is a free data retrieval call binding the contract method 0x249cb3fa.
 //
-// Solidity: function canImplementInterfaceForAddress(bytes32 interfaceHash, address addr) constant returns(bytes32)
+// Solidity: function canImplementInterfaceForAddress(bytes32 interfaceHash, address addr) view returns(bytes32)
 func (_Erc1820Implementer *Erc1820ImplementerCaller) CanImplementInterfaceForAddress(opts *bind.CallOpts, interfaceHash [32]byte, addr common.Address) ([32]byte, error) {
 	var (
 		ret0 = new([32]byte)
@@ -186,14 +185,14 @@ func (_Erc1820Implementer *Erc1820ImplementerCaller) CanImplementInterfaceForAdd
 
 // CanImplementInterfaceForAddress is a free data retrieval call binding the contract method 0x249cb3fa.
 //
-// Solidity: function canImplementInterfaceForAddress(bytes32 interfaceHash, address addr) constant returns(bytes32)
+// Solidity: function canImplementInterfaceForAddress(bytes32 interfaceHash, address addr) view returns(bytes32)
 func (_Erc1820Implementer *Erc1820ImplementerSession) CanImplementInterfaceForAddress(interfaceHash [32]byte, addr common.Address) ([32]byte, error) {
 	return _Erc1820Implementer.Contract.CanImplementInterfaceForAddress(&_Erc1820Implementer.CallOpts, interfaceHash, addr)
 }
 
 // CanImplementInterfaceForAddress is a free data retrieval call binding the contract method 0x249cb3fa.
 //
-// Solidity: function canImplementInterfaceForAddress(bytes32 interfaceHash, address addr) constant returns(bytes32)
+// Solidity: function canImplementInterfaceForAddress(bytes32 interfaceHash, address addr) view returns(bytes32)
 func (_Erc1820Implementer *Erc1820ImplementerCallerSession) CanImplementInterfaceForAddress(interfaceHash [32]byte, addr common.Address) ([32]byte, error) {
 	return _Erc1820Implementer.Contract.CanImplementInterfaceForAddress(&_Erc1820Implementer.CallOpts, interfaceHash, addr)
 }

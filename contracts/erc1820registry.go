@@ -20,7 +20,6 @@ var (
 	_ = big.NewInt
 	_ = strings.NewReader
 	_ = ethereum.NotFound
-	_ = abi.U256
 	_ = bind.Bind
 	_ = common.Big1
 	_ = types.BloomLookup
@@ -174,7 +173,7 @@ func (_Erc1820Registry *Erc1820RegistryTransactorRaw) Transact(opts *bind.Transa
 
 // GetInterfaceImplementer is a free data retrieval call binding the contract method 0xaabbb8ca.
 //
-// Solidity: function getInterfaceImplementer(address _addr, bytes32 _interfaceHash) constant returns(address)
+// Solidity: function getInterfaceImplementer(address _addr, bytes32 _interfaceHash) view returns(address)
 func (_Erc1820Registry *Erc1820RegistryCaller) GetInterfaceImplementer(opts *bind.CallOpts, _addr common.Address, _interfaceHash [32]byte) (common.Address, error) {
 	var (
 		ret0 = new(common.Address)
@@ -186,21 +185,21 @@ func (_Erc1820Registry *Erc1820RegistryCaller) GetInterfaceImplementer(opts *bin
 
 // GetInterfaceImplementer is a free data retrieval call binding the contract method 0xaabbb8ca.
 //
-// Solidity: function getInterfaceImplementer(address _addr, bytes32 _interfaceHash) constant returns(address)
+// Solidity: function getInterfaceImplementer(address _addr, bytes32 _interfaceHash) view returns(address)
 func (_Erc1820Registry *Erc1820RegistrySession) GetInterfaceImplementer(_addr common.Address, _interfaceHash [32]byte) (common.Address, error) {
 	return _Erc1820Registry.Contract.GetInterfaceImplementer(&_Erc1820Registry.CallOpts, _addr, _interfaceHash)
 }
 
 // GetInterfaceImplementer is a free data retrieval call binding the contract method 0xaabbb8ca.
 //
-// Solidity: function getInterfaceImplementer(address _addr, bytes32 _interfaceHash) constant returns(address)
+// Solidity: function getInterfaceImplementer(address _addr, bytes32 _interfaceHash) view returns(address)
 func (_Erc1820Registry *Erc1820RegistryCallerSession) GetInterfaceImplementer(_addr common.Address, _interfaceHash [32]byte) (common.Address, error) {
 	return _Erc1820Registry.Contract.GetInterfaceImplementer(&_Erc1820Registry.CallOpts, _addr, _interfaceHash)
 }
 
 // GetManager is a free data retrieval call binding the contract method 0x3d584063.
 //
-// Solidity: function getManager(address _addr) constant returns(address)
+// Solidity: function getManager(address _addr) view returns(address)
 func (_Erc1820Registry *Erc1820RegistryCaller) GetManager(opts *bind.CallOpts, _addr common.Address) (common.Address, error) {
 	var (
 		ret0 = new(common.Address)
@@ -212,21 +211,21 @@ func (_Erc1820Registry *Erc1820RegistryCaller) GetManager(opts *bind.CallOpts, _
 
 // GetManager is a free data retrieval call binding the contract method 0x3d584063.
 //
-// Solidity: function getManager(address _addr) constant returns(address)
+// Solidity: function getManager(address _addr) view returns(address)
 func (_Erc1820Registry *Erc1820RegistrySession) GetManager(_addr common.Address) (common.Address, error) {
 	return _Erc1820Registry.Contract.GetManager(&_Erc1820Registry.CallOpts, _addr)
 }
 
 // GetManager is a free data retrieval call binding the contract method 0x3d584063.
 //
-// Solidity: function getManager(address _addr) constant returns(address)
+// Solidity: function getManager(address _addr) view returns(address)
 func (_Erc1820Registry *Erc1820RegistryCallerSession) GetManager(_addr common.Address) (common.Address, error) {
 	return _Erc1820Registry.Contract.GetManager(&_Erc1820Registry.CallOpts, _addr)
 }
 
 // ImplementsERC165Interface is a free data retrieval call binding the contract method 0xf712f3e8.
 //
-// Solidity: function implementsERC165Interface(address _contract, bytes4 _interfaceId) constant returns(bool)
+// Solidity: function implementsERC165Interface(address _contract, bytes4 _interfaceId) view returns(bool)
 func (_Erc1820Registry *Erc1820RegistryCaller) ImplementsERC165Interface(opts *bind.CallOpts, _contract common.Address, _interfaceId [4]byte) (bool, error) {
 	var (
 		ret0 = new(bool)
@@ -238,21 +237,21 @@ func (_Erc1820Registry *Erc1820RegistryCaller) ImplementsERC165Interface(opts *b
 
 // ImplementsERC165Interface is a free data retrieval call binding the contract method 0xf712f3e8.
 //
-// Solidity: function implementsERC165Interface(address _contract, bytes4 _interfaceId) constant returns(bool)
+// Solidity: function implementsERC165Interface(address _contract, bytes4 _interfaceId) view returns(bool)
 func (_Erc1820Registry *Erc1820RegistrySession) ImplementsERC165Interface(_contract common.Address, _interfaceId [4]byte) (bool, error) {
 	return _Erc1820Registry.Contract.ImplementsERC165Interface(&_Erc1820Registry.CallOpts, _contract, _interfaceId)
 }
 
 // ImplementsERC165Interface is a free data retrieval call binding the contract method 0xf712f3e8.
 //
-// Solidity: function implementsERC165Interface(address _contract, bytes4 _interfaceId) constant returns(bool)
+// Solidity: function implementsERC165Interface(address _contract, bytes4 _interfaceId) view returns(bool)
 func (_Erc1820Registry *Erc1820RegistryCallerSession) ImplementsERC165Interface(_contract common.Address, _interfaceId [4]byte) (bool, error) {
 	return _Erc1820Registry.Contract.ImplementsERC165Interface(&_Erc1820Registry.CallOpts, _contract, _interfaceId)
 }
 
 // ImplementsERC165InterfaceNoCache is a free data retrieval call binding the contract method 0xb7056765.
 //
-// Solidity: function implementsERC165InterfaceNoCache(address _contract, bytes4 _interfaceId) constant returns(bool)
+// Solidity: function implementsERC165InterfaceNoCache(address _contract, bytes4 _interfaceId) view returns(bool)
 func (_Erc1820Registry *Erc1820RegistryCaller) ImplementsERC165InterfaceNoCache(opts *bind.CallOpts, _contract common.Address, _interfaceId [4]byte) (bool, error) {
 	var (
 		ret0 = new(bool)
@@ -264,21 +263,21 @@ func (_Erc1820Registry *Erc1820RegistryCaller) ImplementsERC165InterfaceNoCache(
 
 // ImplementsERC165InterfaceNoCache is a free data retrieval call binding the contract method 0xb7056765.
 //
-// Solidity: function implementsERC165InterfaceNoCache(address _contract, bytes4 _interfaceId) constant returns(bool)
+// Solidity: function implementsERC165InterfaceNoCache(address _contract, bytes4 _interfaceId) view returns(bool)
 func (_Erc1820Registry *Erc1820RegistrySession) ImplementsERC165InterfaceNoCache(_contract common.Address, _interfaceId [4]byte) (bool, error) {
 	return _Erc1820Registry.Contract.ImplementsERC165InterfaceNoCache(&_Erc1820Registry.CallOpts, _contract, _interfaceId)
 }
 
 // ImplementsERC165InterfaceNoCache is a free data retrieval call binding the contract method 0xb7056765.
 //
-// Solidity: function implementsERC165InterfaceNoCache(address _contract, bytes4 _interfaceId) constant returns(bool)
+// Solidity: function implementsERC165InterfaceNoCache(address _contract, bytes4 _interfaceId) view returns(bool)
 func (_Erc1820Registry *Erc1820RegistryCallerSession) ImplementsERC165InterfaceNoCache(_contract common.Address, _interfaceId [4]byte) (bool, error) {
 	return _Erc1820Registry.Contract.ImplementsERC165InterfaceNoCache(&_Erc1820Registry.CallOpts, _contract, _interfaceId)
 }
 
 // InterfaceHash is a free data retrieval call binding the contract method 0x65ba36c1.
 //
-// Solidity: function interfaceHash(string _interfaceName) constant returns(bytes32)
+// Solidity: function interfaceHash(string _interfaceName) pure returns(bytes32)
 func (_Erc1820Registry *Erc1820RegistryCaller) InterfaceHash(opts *bind.CallOpts, _interfaceName string) ([32]byte, error) {
 	var (
 		ret0 = new([32]byte)
@@ -290,14 +289,14 @@ func (_Erc1820Registry *Erc1820RegistryCaller) InterfaceHash(opts *bind.CallOpts
 
 // InterfaceHash is a free data retrieval call binding the contract method 0x65ba36c1.
 //
-// Solidity: function interfaceHash(string _interfaceName) constant returns(bytes32)
+// Solidity: function interfaceHash(string _interfaceName) pure returns(bytes32)
 func (_Erc1820Registry *Erc1820RegistrySession) InterfaceHash(_interfaceName string) ([32]byte, error) {
 	return _Erc1820Registry.Contract.InterfaceHash(&_Erc1820Registry.CallOpts, _interfaceName)
 }
 
 // InterfaceHash is a free data retrieval call binding the contract method 0x65ba36c1.
 //
-// Solidity: function interfaceHash(string _interfaceName) constant returns(bytes32)
+// Solidity: function interfaceHash(string _interfaceName) pure returns(bytes32)
 func (_Erc1820Registry *Erc1820RegistryCallerSession) InterfaceHash(_interfaceName string) ([32]byte, error) {
 	return _Erc1820Registry.Contract.InterfaceHash(&_Erc1820Registry.CallOpts, _interfaceName)
 }
@@ -515,6 +514,17 @@ func (_Erc1820Registry *Erc1820RegistryFilterer) WatchInterfaceImplementerSet(op
 	}), nil
 }
 
+// ParseInterfaceImplementerSet is a log parse operation binding the contract event 0x93baa6efbd2244243bfee6ce4cfdd1d04fc4c0e9a786abd3a41313bd352db153.
+//
+// Solidity: event InterfaceImplementerSet(address indexed addr, bytes32 indexed interfaceHash, address indexed implementer)
+func (_Erc1820Registry *Erc1820RegistryFilterer) ParseInterfaceImplementerSet(log types.Log) (*Erc1820RegistryInterfaceImplementerSet, error) {
+	event := new(Erc1820RegistryInterfaceImplementerSet)
+	if err := _Erc1820Registry.contract.UnpackLog(event, "InterfaceImplementerSet", log); err != nil {
+		return nil, err
+	}
+	return event, nil
+}
+
 // Erc1820RegistryManagerChangedIterator is returned from FilterManagerChanged and is used to iterate over the raw logs and unpacked data for ManagerChanged events raised by the Erc1820Registry contract.
 type Erc1820RegistryManagerChangedIterator struct {
 	Event *Erc1820RegistryManagerChanged // Event containing the contract specifics and raw log
@@ -654,4 +664,15 @@ func (_Erc1820Registry *Erc1820RegistryFilterer) WatchManagerChanged(opts *bind.
 			}
 		}
 	}), nil
+}
+
+// ParseManagerChanged is a log parse operation binding the contract event 0x605c2dbf762e5f7d60a546d42e7205dcb1b011ebc62a61736a57c9089d3a4350.
+//
+// Solidity: event ManagerChanged(address indexed addr, address indexed newManager)
+func (_Erc1820Registry *Erc1820RegistryFilterer) ParseManagerChanged(log types.Log) (*Erc1820RegistryManagerChanged, error) {
+	event := new(Erc1820RegistryManagerChanged)
+	if err := _Erc1820Registry.contract.UnpackLog(event, "ManagerChanged", log); err != nil {
+		return nil, err
+	}
+	return event, nil
 }
