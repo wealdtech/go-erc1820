@@ -62,6 +62,7 @@ func TestManager(t *testing.T) {
 	client, err := ethclient.Dial("https://ropsten.infura.io/v3/831a5442dc2e4536a9f8dee4ea1707a6")
 	require.Nil(t, err, "failed to acces Infura")
 	registry, err := NewRegistry(client)
+	require.NoError(t, err)
 	addr := common.HexToAddress("7598ac132c987A2eEa0106e2E5B6e67244349071")
 	manager, err := registry.Manager(&addr)
 	require.Nil(t, err, "failed to access registry")

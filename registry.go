@@ -22,6 +22,7 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/pkg/errors"
 	"github.com/wealdtech/go-erc1820/contracts"
 	"golang.org/x/crypto/sha3"
 )
@@ -59,7 +60,10 @@ func (r *Registry) InterfaceImplementer(iface string, address *common.Address) (
 		copy(hash[:], bytes)
 	} else {
 		keccak := sha3.NewLegacyKeccak256()
-		keccak.Write([]byte(iface))
+		_, err := keccak.Write([]byte(iface))
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to write bytes to hash")
+		}
 		copy(hash[:], keccak.Sum(nil))
 	}
 	implementer, err := r.contract.GetInterfaceImplementer(nil, *address, hash)
@@ -69,7 +73,10 @@ func (r *Registry) InterfaceImplementer(iface string, address *common.Address) (
 // SetInterfaceImplementer sets the address of the implementer of the given interface for the given address
 func (r *Registry) SetInterfaceImplementer(opts *bind.TransactOpts, iface string, address *common.Address, implementer *common.Address) (*types.Transaction, error) {
 	keccak := sha3.NewLegacyKeccak256()
-	keccak.Write([]byte(iface))
+	_, err := keccak.Write([]byte(iface))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to write bytes to hash")
+	}
 	var hash [32]byte
 	copy(hash[:], keccak.Sum(nil))
 	tx, err := r.contract.SetInterfaceImplementer(opts, *address, hash, *implementer)

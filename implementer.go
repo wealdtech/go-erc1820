@@ -18,6 +18,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/pkg/errors"
 	"github.com/wealdtech/go-erc1820/contracts"
 	"golang.org/x/crypto/sha3"
 )
@@ -44,7 +45,10 @@ var _acceptMagic = common.HexToHash("a2ef4600d742022d532d4747cb3547474667d6f1380
 // ImplementsInterface returns true if the address implements the given interface for the given address
 func (i *Implementer) ImplementsInterface(iface string, address *common.Address) (bool, error) {
 	keccak := sha3.NewLegacyKeccak256()
-	keccak.Write([]byte(iface))
+	_, err := keccak.Write([]byte(iface))
+	if err != nil {
+		return false, errors.Wrap(err, "failed to write bytes to hash")
+	}
 	var hash [32]byte
 	copy(hash[:], keccak.Sum(nil))
 	result, err := i.contract.CanImplementInterfaceForAddress(nil, hash, *address)
@@ -60,5 +64,5 @@ func (i *Implementer) ImplementsInterface(iface string, address *common.Address)
 		// Some other error
 		return false, err
 	}
-	return bytes.Compare(result[:], _acceptMagic) == 0, nil
+	return bytes.Equal(result[:], _acceptMagic), nil
 }
