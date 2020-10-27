@@ -137,7 +137,7 @@ func bindErc1820Registry(address common.Address, caller bind.ContractCaller, tra
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_Erc1820Registry *Erc1820RegistryRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+func (_Erc1820Registry *Erc1820RegistryRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
 	return _Erc1820Registry.Contract.Erc1820RegistryCaller.contract.Call(opts, result, method, params...)
 }
 
@@ -156,7 +156,7 @@ func (_Erc1820Registry *Erc1820RegistryRaw) Transact(opts *bind.TransactOpts, me
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_Erc1820Registry *Erc1820RegistryCallerRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+func (_Erc1820Registry *Erc1820RegistryCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
 	return _Erc1820Registry.Contract.contract.Call(opts, result, method, params...)
 }
 
@@ -175,12 +175,17 @@ func (_Erc1820Registry *Erc1820RegistryTransactorRaw) Transact(opts *bind.Transa
 //
 // Solidity: function getInterfaceImplementer(address _addr, bytes32 _interfaceHash) view returns(address)
 func (_Erc1820Registry *Erc1820RegistryCaller) GetInterfaceImplementer(opts *bind.CallOpts, _addr common.Address, _interfaceHash [32]byte) (common.Address, error) {
-	var (
-		ret0 = new(common.Address)
-	)
-	out := ret0
-	err := _Erc1820Registry.contract.Call(opts, out, "getInterfaceImplementer", _addr, _interfaceHash)
-	return *ret0, err
+	var out []interface{}
+	err := _Erc1820Registry.contract.Call(opts, &out, "getInterfaceImplementer", _addr, _interfaceHash)
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
 }
 
 // GetInterfaceImplementer is a free data retrieval call binding the contract method 0xaabbb8ca.
@@ -201,12 +206,17 @@ func (_Erc1820Registry *Erc1820RegistryCallerSession) GetInterfaceImplementer(_a
 //
 // Solidity: function getManager(address _addr) view returns(address)
 func (_Erc1820Registry *Erc1820RegistryCaller) GetManager(opts *bind.CallOpts, _addr common.Address) (common.Address, error) {
-	var (
-		ret0 = new(common.Address)
-	)
-	out := ret0
-	err := _Erc1820Registry.contract.Call(opts, out, "getManager", _addr)
-	return *ret0, err
+	var out []interface{}
+	err := _Erc1820Registry.contract.Call(opts, &out, "getManager", _addr)
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
 }
 
 // GetManager is a free data retrieval call binding the contract method 0x3d584063.
@@ -227,12 +237,17 @@ func (_Erc1820Registry *Erc1820RegistryCallerSession) GetManager(_addr common.Ad
 //
 // Solidity: function implementsERC165Interface(address _contract, bytes4 _interfaceId) view returns(bool)
 func (_Erc1820Registry *Erc1820RegistryCaller) ImplementsERC165Interface(opts *bind.CallOpts, _contract common.Address, _interfaceId [4]byte) (bool, error) {
-	var (
-		ret0 = new(bool)
-	)
-	out := ret0
-	err := _Erc1820Registry.contract.Call(opts, out, "implementsERC165Interface", _contract, _interfaceId)
-	return *ret0, err
+	var out []interface{}
+	err := _Erc1820Registry.contract.Call(opts, &out, "implementsERC165Interface", _contract, _interfaceId)
+
+	if err != nil {
+		return *new(bool), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
+
+	return out0, err
+
 }
 
 // ImplementsERC165Interface is a free data retrieval call binding the contract method 0xf712f3e8.
@@ -253,12 +268,17 @@ func (_Erc1820Registry *Erc1820RegistryCallerSession) ImplementsERC165Interface(
 //
 // Solidity: function implementsERC165InterfaceNoCache(address _contract, bytes4 _interfaceId) view returns(bool)
 func (_Erc1820Registry *Erc1820RegistryCaller) ImplementsERC165InterfaceNoCache(opts *bind.CallOpts, _contract common.Address, _interfaceId [4]byte) (bool, error) {
-	var (
-		ret0 = new(bool)
-	)
-	out := ret0
-	err := _Erc1820Registry.contract.Call(opts, out, "implementsERC165InterfaceNoCache", _contract, _interfaceId)
-	return *ret0, err
+	var out []interface{}
+	err := _Erc1820Registry.contract.Call(opts, &out, "implementsERC165InterfaceNoCache", _contract, _interfaceId)
+
+	if err != nil {
+		return *new(bool), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
+
+	return out0, err
+
 }
 
 // ImplementsERC165InterfaceNoCache is a free data retrieval call binding the contract method 0xb7056765.
@@ -279,12 +299,17 @@ func (_Erc1820Registry *Erc1820RegistryCallerSession) ImplementsERC165InterfaceN
 //
 // Solidity: function interfaceHash(string _interfaceName) pure returns(bytes32)
 func (_Erc1820Registry *Erc1820RegistryCaller) InterfaceHash(opts *bind.CallOpts, _interfaceName string) ([32]byte, error) {
-	var (
-		ret0 = new([32]byte)
-	)
-	out := ret0
-	err := _Erc1820Registry.contract.Call(opts, out, "interfaceHash", _interfaceName)
-	return *ret0, err
+	var out []interface{}
+	err := _Erc1820Registry.contract.Call(opts, &out, "interfaceHash", _interfaceName)
+
+	if err != nil {
+		return *new([32]byte), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new([32]byte)).(*[32]byte)
+
+	return out0, err
+
 }
 
 // InterfaceHash is a free data retrieval call binding the contract method 0x65ba36c1.

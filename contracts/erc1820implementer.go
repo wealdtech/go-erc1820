@@ -137,7 +137,7 @@ func bindErc1820Implementer(address common.Address, caller bind.ContractCaller, 
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_Erc1820Implementer *Erc1820ImplementerRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+func (_Erc1820Implementer *Erc1820ImplementerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
 	return _Erc1820Implementer.Contract.Erc1820ImplementerCaller.contract.Call(opts, result, method, params...)
 }
 
@@ -156,7 +156,7 @@ func (_Erc1820Implementer *Erc1820ImplementerRaw) Transact(opts *bind.TransactOp
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_Erc1820Implementer *Erc1820ImplementerCallerRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+func (_Erc1820Implementer *Erc1820ImplementerCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
 	return _Erc1820Implementer.Contract.contract.Call(opts, result, method, params...)
 }
 
@@ -175,12 +175,17 @@ func (_Erc1820Implementer *Erc1820ImplementerTransactorRaw) Transact(opts *bind.
 //
 // Solidity: function canImplementInterfaceForAddress(bytes32 interfaceHash, address addr) view returns(bytes32)
 func (_Erc1820Implementer *Erc1820ImplementerCaller) CanImplementInterfaceForAddress(opts *bind.CallOpts, interfaceHash [32]byte, addr common.Address) ([32]byte, error) {
-	var (
-		ret0 = new([32]byte)
-	)
-	out := ret0
-	err := _Erc1820Implementer.contract.Call(opts, out, "canImplementInterfaceForAddress", interfaceHash, addr)
-	return *ret0, err
+	var out []interface{}
+	err := _Erc1820Implementer.contract.Call(opts, &out, "canImplementInterfaceForAddress", interfaceHash, addr)
+
+	if err != nil {
+		return *new([32]byte), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new([32]byte)).(*[32]byte)
+
+	return out0, err
+
 }
 
 // CanImplementInterfaceForAddress is a free data retrieval call binding the contract method 0x249cb3fa.
