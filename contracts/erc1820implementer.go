@@ -4,6 +4,7 @@
 package contracts
 
 import (
+	"errors"
 	"math/big"
 	"strings"
 
@@ -17,6 +18,7 @@ import (
 
 // Reference imports to suppress errors if they are not otherwise used.
 var (
+	_ = errors.New
 	_ = big.NewInt
 	_ = strings.NewReader
 	_ = ethereum.NotFound
@@ -24,10 +26,17 @@ var (
 	_ = common.Big1
 	_ = types.BloomLookup
 	_ = event.NewSubscription
+	_ = abi.ConvertType
 )
 
+// Erc1820ImplementerMetaData contains all meta data concerning the Erc1820Implementer contract.
+var Erc1820ImplementerMetaData = &bind.MetaData{
+	ABI: "[{\"constant\":true,\"inputs\":[{\"name\":\"interfaceHash\",\"type\":\"bytes32\"},{\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"canImplementInterfaceForAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]",
+}
+
 // Erc1820ImplementerABI is the input ABI used to generate the binding from.
-const Erc1820ImplementerABI = "[{\"constant\":true,\"inputs\":[{\"name\":\"interfaceHash\",\"type\":\"bytes32\"},{\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"canImplementInterfaceForAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]"
+// Deprecated: Use Erc1820ImplementerMetaData.ABI instead.
+var Erc1820ImplementerABI = Erc1820ImplementerMetaData.ABI
 
 // Erc1820Implementer is an auto generated Go binding around an Ethereum contract.
 type Erc1820Implementer struct {
@@ -126,11 +135,11 @@ func NewErc1820ImplementerFilterer(address common.Address, filterer bind.Contrac
 
 // bindErc1820Implementer binds a generic wrapper to an already deployed contract.
 func bindErc1820Implementer(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := abi.JSON(strings.NewReader(Erc1820ImplementerABI))
+	parsed, err := Erc1820ImplementerMetaData.GetAbi()
 	if err != nil {
 		return nil, err
 	}
-	return bind.NewBoundContract(address, parsed, caller, transactor, filterer), nil
+	return bind.NewBoundContract(address, *parsed, caller, transactor, filterer), nil
 }
 
 // Call invokes the (constant) contract method with params as input values and
